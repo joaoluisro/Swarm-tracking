@@ -1,6 +1,23 @@
-cmake_minimum_required(2.8.12)
+cmake_minimum_required(VERSION 2.8.12)
 
 project(swarm_tracking)
+
+
+if(APPLE)
+  option(ASAN "Use Clang Address Sanitizer in Debug builds")
+  if(ASAN)
+    # Add address sanitizer support for CLang
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -fsanitize=address -fno-optimize-sibling-calls -fno-omit-frame-pointer")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address -fno-optimize-sibling-calls -fno-omit-frame-pointer")
+    set(CMAKE_MODULE_LINKER_FLAGS_DEBUG "${CMAKE_MODULE_LINKER_FLAGS_DEBUG} -fsanitize=address")
+    set(CMAKE_SHARED_LINKER_FLAGS_DEBUG "${CMAKE_MODULE_LINKER_FLAGS_DEBUG} -fsanitize=address")
+    set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_MODULE_LINKER_FLAGS_DEBUG} -fsanitize=address")
+  endif(ASAN)
+endif(APPLE)
+
+# Deactivate RPATH for MacOSX
+set(CMAKE_MACOSX_RPATH 0)
+
 
 # Set the path where CMake will find additional scripts
 set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
@@ -15,7 +32,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ARGOS_PREFIX}/share/argos3/cmake)
 # code that depends on Qt and OpenGL
 include(ARGoSCheckQTOpenGL)
 
-Find Lua
 find_package(Lua53 REQUIRED)
 
 # Set ARGoS include dir
