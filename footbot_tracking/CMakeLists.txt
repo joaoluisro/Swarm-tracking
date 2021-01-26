@@ -1,0 +1,5 @@
+add_library(footbot_tracking SHARED footbot_tracking.h footbot_tracking.cpp)
+target_link_libraries(footbot_tracking
+  argos3core_simulator
+  argos3plugin_simulator_footbot
+  argos3plugin_simulator_genericrobot)

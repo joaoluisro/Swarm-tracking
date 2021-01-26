@@ -54,7 +54,7 @@
   <loop_functions library="build/foraging_loop_functions/libforaging_loop_functions"
                   label="foraging_loop_functions">
     <foraging items="1"
-              radius="0.1"
+              radius="0.2"
               energy_per_item="1000"
               energy_per_walking_robot="1"
               output="foraging.txt" />

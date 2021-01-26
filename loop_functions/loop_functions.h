@@ -8,12 +8,12 @@
 
 using namespace argos;
 
-class CForagingLoopFunctions : public CLoopFunctions {
+class CTrackingLoopFunctions : public CLoopFunctions {
 
 public:
 
-   CForagingLoopFunctions();
-   virtual ~CForagingLoopFunctions() {}
+   CTrackingLoopFunctions();
+   virtual ~CTrackingLoopFunctions() {}
 
    virtual void Init(TConfigurationNode& t_tree);
    virtual void Reset();

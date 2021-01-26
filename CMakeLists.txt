@@ -16,5 +16,5 @@ link_directories(${ARGOS_LIBRARY_DIRS})
 
 # compila subdiretórios
 
-add_subdirectory(footbot_foraging)
-add_subdirectory(foraging_loop_functions)
+add_subdirectory(footbot_tracking)
+add_subdirectory(loop_functions)

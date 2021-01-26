@@ -1,5 +1,5 @@
 #include "foraging_qt_user_functions.h"
-#include <footbot_foraging/footbot_foraging.h>
+#include <footbot_tracking/footbot_tracking.h>
 #include <argos3/core/simulator/entity/controllable_entity.h>
 
 using namespace argos;
@@ -9,9 +9,9 @@ CForagingQTUserFunctions::CForagingQTUserFunctions() {
 }
 
 void CForagingQTUserFunctions::Draw(CFootBotEntity& c_entity) {
-   CFootBotForaging& cController = dynamic_cast<CFootBotForaging&>(c_entity.GetControllableEntity().GetController());
-   CFootBotForaging::SFoodData& sFoodData = cController.GetFoodData();
-   if(sFoodData.HasFoodItem) {
+   FootBotTrack& cController = dynamic_cast<FootBotTrack&>(c_entity.GetControllableEntity().GetController());
+   FootBotTrack::Alvo& Alvo = cController.GetInfoAlvo();
+   if(Alvo.AlvoSpotted) {
       DrawCylinder(
          CVector3(0.0f, 0.0f, 0.3f),
          CQuaternion(),
