@@ -130,6 +130,7 @@ void CForagingLoopFunctions::PreStep() {
       /* The foot-bot has a food item */
       if(sFoodData.HasFoodItem) {
          /* Check whether the foot-bot is in the nest */
+         break;
          if(cPos.GetX() < -1.0f) {
             /* Place a new food item on the ground */
             m_cFoodPos[sFoodData.FoodItemIdx].Set(m_pcRNG->Uniform(m_cForagingArenaSideX),

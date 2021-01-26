@@ -1,12 +1,3 @@
-/*
- * AUTHOR: Carlo Pinciroli <cpinciro@ulb.ac.be>
- *
- * An example foraging controller for the foot-bot.
- *
- * This controller is meant to be used with the XML file:
- *    experiments/foraging.argos
- */
-
 #ifndef FOOTBOT_FORAGING_H
 #define FOOTBOT_FORAGING_H
 

@@ -202,7 +202,7 @@ void CFootBotForaging::UpdateState() {
     * placed close to the wheel motors. It returns a value between 0 and 1.
     * It is 1 when the robot is on a white area, it is 0 when the robot
     * is on a black area and it is around 0.5 when the robot is on a gray
-    * area. 
+    * area.
     * The foot-bot has 4 sensors like this, two in the front
     * (corresponding to readings 0 and 1) and two in the back
     * (corresponding to reading 2 and 3).  Here we want the back sensors
@@ -500,11 +500,8 @@ void CFootBotForaging::ReturnToNest() {
       /* Still outside the nest */
       m_sStateData.TimeSearchingForPlaceInNest = 0;
    }
-   /* Keep going */
-   bool bCollision;
-   SetWheelSpeedsFromVector(
-      m_sWheelTurningParams.MaxSpeed * DiffusionVector(bCollision) +
-      m_sWheelTurningParams.MaxSpeed * CalculateVectorToLight());
+
+   SetWheelSpeedsFromVector(CVector2(0.0, 0.0));
 }
 
 /****************************************/

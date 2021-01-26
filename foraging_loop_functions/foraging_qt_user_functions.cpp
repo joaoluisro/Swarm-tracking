@@ -4,15 +4,9 @@
 
 using namespace argos;
 
-/****************************************/
-/****************************************/
-
 CForagingQTUserFunctions::CForagingQTUserFunctions() {
    RegisterUserFunction<CForagingQTUserFunctions,CFootBotEntity>(&CForagingQTUserFunctions::Draw);
 }
-
-/****************************************/
-/****************************************/
 
 void CForagingQTUserFunctions::Draw(CFootBotEntity& c_entity) {
    CFootBotForaging& cController = dynamic_cast<CFootBotForaging&>(c_entity.GetControllableEntity().GetController());
@@ -27,7 +21,5 @@ void CForagingQTUserFunctions::Draw(CFootBotEntity& c_entity) {
    }
 }
 
-/****************************************/
-/****************************************/
 
 REGISTER_QTOPENGL_USER_FUNCTIONS(CForagingQTUserFunctions, "foraging_qt_user_functions")
