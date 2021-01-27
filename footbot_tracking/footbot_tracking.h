@@ -130,7 +130,7 @@ private:
    void SetWheelSpeedsFromVector(const CVector2& c_heading);
    void Rest();
    void Explore();
-   void ReturnToNest();
+   void FoundTarget();
 
 private:
 

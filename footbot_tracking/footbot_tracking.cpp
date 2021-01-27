@@ -110,7 +110,7 @@ void FootBotTrack::ControlStep() {
          break;
       }
       case SStateData::STATE_RETURN_TO_NEST: {
-         ReturnToNest();
+         FoundTarget();
          break;
       }
       default: {
@@ -297,7 +297,7 @@ void FootBotTrack::Rest() {
 
 void FootBotTrack::Explore() {
 
-   bool bReturnToNest(false);
+   bool bFoundTarget(false);
 
    if(m_Alvo.AlvoSpotted) {
 
@@ -306,13 +306,13 @@ void FootBotTrack::Explore() {
       m_sStateData.RestToExploreProb += m_sStateData.FoodRuleRestToExploreDeltaProb;
       m_sStateData.ProbRange.TruncValue(m_sStateData.RestToExploreProb);
       m_eLastExplorationResult = LAST_EXPLORATION_SUCCESSFUL;
-      bReturnToNest = true;
+      bFoundTarget = true;
    }
 
    else if(m_sStateData.TimeExploringUnsuccessfully > m_sStateData.MinimumUnsuccessfulExploreTime) {
       if (m_pcRNG->Uniform(m_sStateData.ProbRange) < m_sStateData.ExploreToRestProb) {
          m_eLastExplorationResult = LAST_EXPLORATION_UNSUCCESSFUL;
-         bReturnToNest = true;
+         bFoundTarget = true;
       }
       else {
 
@@ -323,7 +323,7 @@ void FootBotTrack::Explore() {
       }
    }
 
-   if(bReturnToNest) {
+   if(bFoundTarget) {
 
       m_sStateData.TimeExploringUnsuccessfully = 0;
       m_sStateData.TimeSearchingForPlaceInNest = 0;
@@ -358,7 +358,7 @@ void FootBotTrack::Explore() {
 }
 
 
-void FootBotTrack::ReturnToNest() {
+void FootBotTrack::FoundTarget() {
    UpdateState();
    if(m_sStateData.InNest) {
       if(m_sStateData.TimeSearchingForPlaceInNest > m_sStateData.MinimumSearchForPlaceInNestTime) {
