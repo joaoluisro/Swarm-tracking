@@ -13,7 +13,7 @@
   <controllers>
 
     <footbot_foraging_controller id="ffc"
-                                 library="build/footbot_foraging/libfootbot_foraging">
+                                 library="build/footbot_tracking/libfootbot_tracking">
       <actuators>
         <differential_steering implementation="default" />
         <leds implementation="default" medium="leds" />
@@ -51,8 +51,8 @@
 
   <!-- rotinas -->
 
-  <loop_functions library="build/foraging_loop_functions/libforaging_loop_functions"
-                  label="foraging_loop_functions">
+  <loop_functions library="build/loop_functions/libloop_functions"
+                  label="loop_functions">
     <foraging items="1"
               radius="0.2"
               energy_per_item="1000"
